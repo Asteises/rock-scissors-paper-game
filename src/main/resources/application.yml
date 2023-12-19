@@ -1,0 +1,23 @@
+
+spring:
+  datasource:
+    url: ${POSTGRES_JDBC_URL:jdbc:postgresql://localhost:5432/postgres}
+    username: ${POSTGRES_USERNAME:postgres}
+    password: ${POSTGRES_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate.default_schema: ${POSTGRES_SCHEMA:pins}
+  liquibase:
+    default-schema: ${POSTGRES_SCHEMA:pins}
+    change-log: classpath:/${POSTGRES_SCHEMA:pins}/master.yml
+telegram:
+  bot:
+    token: ${BOT_TOKEN:6524265011:AAHs7hScYcMcswKdi6YXT5JvHSxeRgCc-NI}
+#    token: ${BOT_TOKEN:6662766853:AAEXDNKKTY6KQpqhrM8tIvH12HSegUM24zY}
+server:
+  port: 8099
